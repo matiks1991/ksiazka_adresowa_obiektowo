@@ -2,13 +2,7 @@
 
 using namespace std;
 
-PlikZUzytkownikami::PlikZUzytkownikami()
-{
-    nazwaPlikuZUzytkownikami = "Uzytkownicy.txt";
-    daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
-}
-
-bool PlikZUzytkownikami::czyPlikJestPusty()
+bool PlikZUzytkownikami::czyPlikJestPusty(fstream &plikTekstowy)
 {
     plikTekstowy.seekg(0, ios::end);
     if (plikTekstowy.tellg() == 0)
@@ -20,13 +14,15 @@ bool PlikZUzytkownikami::czyPlikJestPusty()
 void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik)
 {
     string liniaZDanymiUzytkownika = "";
+    fstream plikTekstowy;
+
     plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::app);
 
     if (plikTekstowy.good() == true)
     {
         liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownik);
 
-        if (czyPlikJestPusty() == true)
+        if (czyPlikJestPusty(plikTekstowy) == true)
         {
             plikTekstowy << liniaZDanymiUzytkownika;
         }
@@ -53,8 +49,10 @@ string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowym
 
 vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku()
 {
+    string daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
     Uzytkownik uzytkownik;
     vector <Uzytkownik> uzytkownicy;
+    fstream plikTekstowy;
 
     plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::in);
 
@@ -62,7 +60,7 @@ vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku()
     {
         while (getline(plikTekstowy, daneJednegoUzytkownikaOddzielonePionowymiKreskami))
         {
-            uzytkownik = pobierzDaneUzytkownika();
+            uzytkownik = pobierzDaneUzytkownika(daneJednegoUzytkownikaOddzielonePionowymiKreskami);
             uzytkownicy.push_back(uzytkownik);
         }
     }
@@ -71,7 +69,7 @@ vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku()
     return uzytkownicy;
 }
 
-Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika()
+Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami)
 {
     Uzytkownik uzytkownik;
     string pojedynczaDanaUzytkownika = "";
