@@ -18,16 +18,13 @@ Uzytkownik UzytkownikManager::podajDaneNowegoUzytkownika()
 {
     Uzytkownik uzytkownik;
 
-    //uzytkownik.id = pobierzIdNowegoUzytkownika();
     uzytkownik.ustawId(pobierzIdNowegoUzytkownika());
 
-    //string login;
+
     do
     {
         cout << "Podaj login: ";
-        //uzytkownik.login = wczytajLinie();
         uzytkownik.ustawLogin(MetodyPomocnicze::wczytajLinie());
-        //uzytkownik.ustawLogin(login);
     } while(czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
 
     cout << "Podaj haslo: ";
@@ -94,7 +91,11 @@ int UzytkownikManager::logowanieUzytkownika()
                 {
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
+
                     idZalogowanegoUzytkownika = itr -> Uzytkownik::pobierzId();
+
+                    adresatManager.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
+
                     return itr -> Uzytkownik::pobierzId();
                 }
             }
@@ -107,6 +108,7 @@ int UzytkownikManager::logowanieUzytkownika()
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
+    idZalogowanegoUzytkownika = 0;
     return 0;
 }
 
@@ -132,5 +134,16 @@ void UzytkownikManager::zmianaHaslaZalogowanegoUzytkownika()
 void UzytkownikManager::wylogujUzytkownika()
 {
     idZalogowanegoUzytkownika = 0;
-    //adresaci.clear();
+    adresatManager.wylogujUzytkownika();
+}
+
+void UzytkownikManager::dodajAdresata()
+{
+    cout << idZalogowanegoUzytkownika << endl;
+    adresatManager.dodajAdresata(idZalogowanegoUzytkownika);
+}
+
+void UzytkownikManager::wyswietlWszystkichAdresatow()
+{
+    adresatManager.wyswietlWszystkichAdresatow();
 }

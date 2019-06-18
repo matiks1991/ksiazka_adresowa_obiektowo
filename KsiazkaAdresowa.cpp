@@ -25,3 +25,13 @@ void KsiazkaAdresowa::wylogujUzytkownika()
 {
     uzytkownikManager.wylogujUzytkownika();
 }
+
+void KsiazkaAdresowa::dodajAdresata()
+{
+    uzytkownikManager.dodajAdresata();
+}
+
+void KsiazkaAdresowa::wyswietlWszystkichAdresatow()
+{
+    uzytkownikManager.wyswietlWszystkichAdresatow();
+}
