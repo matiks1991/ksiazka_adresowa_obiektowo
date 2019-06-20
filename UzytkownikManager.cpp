@@ -64,11 +64,6 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
     }
 }
 
-void UzytkownikManager::wczytajUzytkownikowZPliku()
-{
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
-}
-
 int UzytkownikManager::logowanieUzytkownika()
 {
     Uzytkownik uzytkownik;
@@ -146,4 +141,9 @@ void UzytkownikManager::dodajAdresata()
 void UzytkownikManager::wyswietlWszystkichAdresatow()
 {
     adresatManager.wyswietlWszystkichAdresatow();
+}
+
+int UzytkownikManager::pobierzIdZalogowanegoUzytkownika()
+{
+    return idZalogowanegoUzytkownika;
 }

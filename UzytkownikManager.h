@@ -24,15 +24,17 @@ class UzytkownikManager
 
 
 public:
-    UzytkownikManager(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami), adresatManager(nazwaPlikuZAdresatami), idZalogowanegoUzytkownika(0) {};
+    UzytkownikManager(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami), adresatManager(nazwaPlikuZAdresatami), idZalogowanegoUzytkownika(0) {
+    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
+    };
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
-    void wczytajUzytkownikowZPliku();
     int logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
     void wylogujUzytkownika();
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
+    int pobierzIdZalogowanegoUzytkownika();
 };
 
 #endif
