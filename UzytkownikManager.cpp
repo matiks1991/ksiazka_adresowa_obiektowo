@@ -20,7 +20,6 @@ Uzytkownik UzytkownikManager::podajDaneNowegoUzytkownika()
 
     uzytkownik.ustawId(pobierzIdNowegoUzytkownika());
 
-
     do
     {
         cout << "Podaj login: ";
@@ -64,11 +63,6 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
     }
 }
 
-void UzytkownikManager::wczytajUzytkownikowZPliku()
-{
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
-}
-
 int UzytkownikManager::logowanieUzytkownika()
 {
     Uzytkownik uzytkownik;
@@ -93,9 +87,6 @@ int UzytkownikManager::logowanieUzytkownika()
                     system("pause");
 
                     idZalogowanegoUzytkownika = itr -> Uzytkownik::pobierzId();
-
-                    adresatManager.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
-
                     return itr -> Uzytkownik::pobierzId();
                 }
             }
@@ -134,16 +125,20 @@ void UzytkownikManager::zmianaHaslaZalogowanegoUzytkownika()
 void UzytkownikManager::wylogujUzytkownika()
 {
     idZalogowanegoUzytkownika = 0;
-    adresatManager.wylogujUzytkownika();
 }
 
-void UzytkownikManager::dodajAdresata()
-{
-    cout << idZalogowanegoUzytkownika << endl;
-    adresatManager.dodajAdresata(idZalogowanegoUzytkownika);
+int UzytkownikManager::pobierzIdZalogowanegoUzytkownika(){
+    return idZalogowanegoUzytkownika;
 }
 
-void UzytkownikManager::wyswietlWszystkichAdresatow()
+void UzytkownikManager::ustawIdZalogowanegoUzytkownika(int noweId){
+    idZalogowanegoUzytkownika = noweId;
+}
+
+bool UzytkownikManager::czyUzytkownikJestZalogowany()
 {
-    adresatManager.wyswietlWszystkichAdresatow();
+    if(idZalogowanegoUzytkownika > 0)
+        return true;
+    else
+        return false;
 }
