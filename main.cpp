@@ -9,6 +9,7 @@ int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
     char wybor;
+
     while(true)
     {
         if(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika() == 0)
