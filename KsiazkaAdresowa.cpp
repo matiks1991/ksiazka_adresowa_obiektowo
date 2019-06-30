@@ -101,3 +101,17 @@ int KsiazkaAdresowa::pobierzIdZalogowanegoUzytkownika()
 {
     uzytkownikManager.pobierzIdZalogowanegoUzytkownika();
 }
+
+void KsiazkaAdresowa::usunAdresata()
+{
+    if(uzytkownikManager.czyUzytkownikJestZalogowany())
+    {
+        adresatManager->usunAdresata();
+    }
+    else
+    {
+        cout << "Aby usunac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
