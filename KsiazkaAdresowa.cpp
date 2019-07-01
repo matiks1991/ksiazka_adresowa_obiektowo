@@ -115,3 +115,15 @@ void KsiazkaAdresowa::usunAdresata()
     }
 }
 
+void KsiazkaAdresowa::edytujAdresata()
+{
+    if(uzytkownikManager.czyUzytkownikJestZalogowany())
+    {
+        adresatManager->edytujAdresata();
+    }
+    else
+    {
+        cout << "Aby edytowac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
