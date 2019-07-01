@@ -34,6 +34,7 @@ class PlikZAdresatami
     int pobierzIdOstatniegoAdresata();
     int pobierzZPlikuIdOstatniegoAdresata();
     void usunWybranegoAdresataZPliku(int idUsuwanegoAdresata);
+    void edytujAdresataWPliku(Adresat adresat);
 };
 
 #endif

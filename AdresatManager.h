@@ -20,6 +20,8 @@ class AdresatManager
     void wyswietlDaneAdresata(Adresat adresat);
     int podajIdWybranegoAdresata();
     void podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata();
+    char wybierzOpcjeZMenuEdycja();
+    void zaktualizujDaneWybranegoAdresata(Adresat adresat);
 
 public:
     AdresatManager(string NAZWAPLIKUZADRESATAMI, int idZalogowanegoUzytkownika)
@@ -31,6 +33,7 @@ public:
     void wyswietlWszystkichAdresatow();
     void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
     void usunAdresata();
+    void edytujAdresata();
 };
 
 #endif
