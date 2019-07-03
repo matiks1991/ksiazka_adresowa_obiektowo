@@ -59,7 +59,6 @@ vector<Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(i
             if(idZalogowanegoUzytkownika == pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
             {
                 adresat = pobierzDaneAdresata(daneJednegoAdresataOddzielonePionowymiKreskami);
-                cout << adresat.pobierzId() << " " << adresat.pobierzImie() << endl;
                 adresaci.push_back(adresat);
             }
         }
@@ -172,8 +171,8 @@ void PlikZAdresatami::usunWybranegoAdresataZPliku(int idUsuwanegoAdresata)
                     tymczasowyPlikTekstowy << endl << daneJednegoAdresataOddzielonePionowymiKreskami;
                 else if (numerWczytanejLinii > 1 && numerUsuwanejLinii != 1)
                     tymczasowyPlikTekstowy << endl << daneJednegoAdresataOddzielonePionowymiKreskami;
-                numerWczytanejLinii++;
             }
+            numerWczytanejLinii++;
         }
 
         odczytywanyPlikTekstowy.close();

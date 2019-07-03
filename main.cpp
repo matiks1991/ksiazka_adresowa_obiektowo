@@ -9,8 +9,6 @@ int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
     char wybor;
-    int idUsunietegoAdresata = 0;
-    int idOstatniegoAdresata = 0;
 
     while(true)
     {
